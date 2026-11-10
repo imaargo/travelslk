@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Plan Your Journey — TravelsLK</title>
+  <meta name="description" content="Build your Sri Lankan experience with TravelsLK. Tell us your dates, guests and add-ons and we'll confirm your booking by WhatsApp or email.">
+  <meta name="theme-color" content="#063a44">
+  <link rel="icon" href="assets/img/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Caveat:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-page="plan">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div id="site-header"></div>
+
+  <main id="main">
+    <section class="page-hero page-hero--plan">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Home</a>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>
+          <span>Plan Your Journey</span>
+        </nav>
+        <h1>Plan your journey</h1>
+        <p class="lead">Four quick steps. Tell us what you'd love to do and we'll come back with availability, a clear quote and the next steps — usually on WhatsApp.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="booking-shell">
+          <div class="booking-card">
+            <div class="step-dots" aria-label="Booking progress">
+              <span class="step-dot is-active" data-step="1"><span>1</span>Experience</span>
+              <span class="step-dot" data-step="2"><span>2</span>Guests</span>
+              <span class="step-dot" data-step="3"><span>3</span>Add-ons</span>
+              <span class="step-dot" data-step="4"><span>4</span>Details</span>
+            </div>
+            <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+
+            <form id="bookingForm" novalidate>
+              <!-- STEP 1 -->
+              <div class="step is-active" data-step="1">
+                <h2>What would you like to do?</h2>
+                <p>Pick an experience, or choose a tailor-made tour and we'll design it with you.</p>
+                <div class="form-grid">
+                  <div class="field field--full">
+                    <label for="bkExperience">Experience <span class="req">*</span></label>
+                    <select id="bkExperience" name="experience" required>
+                      <option value="">Choose an experience…</option>
+                      <optgroup label="Water &amp; wildlife">
+                        <option value="whale-watching|50">Whale Watching &amp; Dolphin Tour · Mirissa</option>
+                        <option value="jetski|80">Colombo Jet Ski Ride · Port City</option>
+                        <option value="kayak-snorkel|20">Kayaking &amp; Turtle Snorkelling · Mirissa</option>
+                      </optgroup>
+                      <optgroup label="Yacht">
+                        <option value="yacht-events|600">Sunset Yacht Events · Colombo</option>
+                        <option value="sunset-boat|350">Mirissa Sunset Boat Tour</option>
+                        <option value="yacht-party|1100">Sea You in Mirissa Yacht Party</option>
+                      </optgroup>
+                      <optgroup label="Sky">
+                        <option value="heli-tour|77">Heli Tour: Colombo Sky · Battaramulla</option>
+                        <option value="heli-wedding|">Luxury Heli Wedding Pre-Shoot (quote)</option>
+                      </optgroup>
+                      <optgroup label="Tours &amp; more">
+                        <option value="tailor-made|">Tailor-Made Tour (quote)</option>
+                        <option value="transport|">Premium Transport · Island-wide (quote)</option>
+                        <option value="boat-preshoot|133">Luxury Boat Pre-Shoot · Mirissa</option>
+                        <option value="mice|">MICE &amp; Events (quote)</option>
+                      </optgroup>
+                    </select>
+                    <span class="error-msg">Please choose an experience.</span>
+                  </div>
+                  <div class="field">
+                    <label for="bkDate">Preferred date</label>
+                    <input type="date" id="bkDate" name="date">
+                    <span class="error-msg">Please choose a date, or tick flexible.</span>
+                  </div>
+                  <div class="field" style="justify-content: flex-end; padding-bottom: 10px;">
+                    <label class="check-row" for="bkFlexible">
+                      <input type="checkbox" id="bkFlexible" name="flexible">
+                      My dates are flexible
+                    </label>
+                    <small>We'll suggest the best days for weather and availability.</small>
+                  </div>
+                </div>
+                <div class="step-actions">
+                  <span></span>
+                  <button class="btn btn-primary" type="button" data-next>Continue
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                  </button>
+                </div>
+              </div>
+
+              <!-- STEP 2 -->
+              <div class="step" data-step="2">
+                <h2>Who's coming?</h2>
+                <p>A quick headcount helps us match the right boat, vehicle and guide.</p>
+                <div class="form-grid">
+                  <div class="field">
+                    <label for="bkAdults">Adults <span class="req">*</span></label>
+                    <input type="number" id="bkAdults" name="adults" min="1" max="200" value="2" required>
+                    <span class="error-msg">At least one adult is required.</span>
+                  </div>
+                  <div class="field">
+                    <label for="bkChildren">Children</label>
+                    <input type="number" id="bkChildren" name="children" min="0" max="50" value="0">
+                    <small>Under-5s often travel free on select experiences.</small>
+                  </div>
+                  <div class="field field--full">
+                    <label for="bkPickup">Pickup / hotel</label>
+                    <input type="text" id="bkPickup" name="pickup" placeholder="e.g. Galle Face Hotel, Colombo">
+                    <small>Leave blank if you'd like us to suggest a meeting point.</small>
+                  </div>
+                </div>
+                <div class="step-actions">
+                  <button class="btn btn-outline" type="button" data-prev>Back</button>
+                  <button class="btn btn-primary" type="button" data-next>Continue
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                  </button>
+                </div>
+              </div>
+
+              <!-- STEP 3 -->
+              <div class="step" data-step="3">
+                <h2>Make it yours</h2>
+                <p>Optional extras — pick any that sound good, or skip if you'd rather decide later.</p>
+                <div class="addon-grid">
+                  <label class="addon"><input type="checkbox" name="addon" value="Photography"> Photography</label>
+                  <label class="addon"><input type="checkbox" name="addon" value="Videography"> Videography</label>
+                  <label class="addon"><input type="checkbox" name="addon" value="Drone"> Drone</label>
+                  <label class="addon"><input type="checkbox" name="addon" value="Decoration"> Decoration</label>
+                  <label class="addon"><input type="checkbox" name="addon" value="Fireworks"> Fireworks</label>
+                  <label class="addon"><input type="checkbox" name="addon" value="Food arrangement"> Food arrangement</label>
+                  <label class="addon"><input type="checkbox" name="addon" value="Jet ski rides"> Jet ski rides</label>
+                  <label class="addon"><input type="checkbox" name="addon" value="GoPro rental"> GoPro rental</label>
+                </div>
+                <div class="step-actions">
+                  <button class="btn btn-outline" type="button" data-prev>Back</button>
+                  <button class="btn btn-primary" type="button" data-next>Continue
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                  </button>
+                </div>
+              </div>
+
+              <!-- STEP 4 -->
+              <div class="step" data-step="4">
+                <h2>Almost there</h2>
+                <p>Leave your details and we'll confirm availability and the final quote.</p>
+                <div class="form-grid">
+                  <div class="field">
+                    <label for="bkName">Full name <span class="req">*</span></label>
+                    <input type="text" id="bkName" name="name" autocomplete="name" required>
+                    <span class="error-msg">Please tell us your name.</span>
+                  </div>
+                  <div class="field">
+                    <label for="bkCountry">Country</label>
+                    <input type="text" id="bkCountry" name="country" autocomplete="country-name">
+                  </div>
+                  <div class="field">
+                    <label for="bkEmail">Email</label>
+                    <input type="email" id="bkEmail" name="email" autocomplete="email" placeholder="you@example.com">
+                    <span class="error-msg">Please add an email or phone number.</span>
+                  </div>
+                  <div class="field">
+                    <label for="bkPhone">Phone / WhatsApp</label>
+                    <input type="tel" id="bkPhone" name="phone" autocomplete="tel" placeholder="+94 …">
+                    <span class="error-msg">Please add an email or phone number.</span>
+                  </div>
+                  <div class="field field--full">
+                    <label for="bkNotes">Anything else?</label>
+                    <textarea id="bkNotes" name="notes" placeholder="Celebrations, dietary needs, mobility, preferred times…"></textarea>
+                  </div>
+                  <div class="field field--full">
+                    <label class="check-row" for="bkConsent" style="align-items: flex-start;">
+                      <input type="checkbox" id="bkConsent" name="consent" required>
+                      <span>I'm happy for TravelsLK to contact me about this inquiry. <span class="req">*</span></span>
+                    </label>
+                    <span class="error-msg">Please tick to continue.</span>
+                  </div>
+                </div>
+                <div class="step-actions">
+                  <button class="btn btn-outline" type="button" data-prev>Back</button>
+                  <button class="btn btn-primary" type="submit">Send inquiry
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                  </button>
+                </div>
+                <p class="form-note">Sending opens WhatsApp with your details ready to go. Prefer email? Write to <a href="mailto:info.travelslk@gmail.com" style="color:var(--orange-deep);font-weight:700;">info.travelslk@gmail.com</a>.</p>
+              </div>
+            </form>
+
+            <!-- success -->
+            <div class="success-panel" id="bookingSuccess" role="status" aria-live="polite">
+              <div class="success-ic">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></svg>
+              </div>
+              <h2>Your inquiry is ready!</h2>
+              <p>We've opened WhatsApp with your details. If it didn't open, message us on <a href="https://wa.me/94767107508" target="_blank" rel="noopener" style="color:var(--orange-deep);font-weight:700;">+94 76 710 7508</a>. We usually reply within the day.</p>
+              <button class="btn btn-primary" type="button" id="bookingAgain">Plan another experience</button>
+            </div>
+          </div>
+
+          <!-- summary -->
+          <aside class="booking-summary" aria-label="Booking summary">
+            <h3>Your journey so far</h3>
+            <div class="summary-list" id="summaryList">
+              <p class="summary-empty">Your selections will appear here as you go.</p>
+            </div>
+            <p class="summary-note">No payment is taken now. We confirm availability and the final quote first — then arrange payment by card, bank transfer, PayPal or KOKO.</p>
+            <div style="margin-top:18px; position:relative; z-index:1;">
+              <a class="btn btn-light btn-sm btn-block" href="https://wa.me/94767107508" target="_blank" rel="noopener" style="margin-bottom:10px;">Chat on WhatsApp</a>
+              <a class="btn btn-outline-light btn-sm btn-block" href="tel:+94767107508">Call +94 76 710 7508</a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tight">
+      <div class="container">
+        <div class="pay-band reveal">
+          <div>
+            <h3>Good to know</h3>
+            <p>Water activities depend on weather and sea conditions. We'll always suggest the safest, best-value option for your dates.</p>
+          </div>
+          <div class="pay-pills">
+            <span class="pay-pill">No payment now</span>
+            <span class="pay-pill">Free itinerary help</span>
+            <span class="pay-pill">WhatsApp reply</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="js/main.js"></script>
+</body>
+</html>

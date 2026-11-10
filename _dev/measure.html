@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><title>measure</title>
+<style>body{font-family:monospace;font-size:12px;margin:0}iframe{border:1px solid #ccc}</style>
+</head>
+<body>
+<pre id="out">measuring…</pre>
+<div id="frames"></div>
+<script>
+const pages = ["index.html", "tours.html"];
+const widths = [390, 768];
+const out = [];
+let pending = 0;
+
+function widest(doc) {
+  let worst = null;
+  doc.querySelectorAll("body *").forEach((el) => {
+    const r = el.getBoundingClientRect();
+    if (r.width > 0 && r.right > (worst ? worst.right : 0)) worst = { right: r.right, tag: el.tagName, cls: String(el.className).slice(0, 60) };
+  });
+  return worst;
+}
+
+pages.forEach((p) => widths.forEach((w) => {
+  pending++;
+  const f = document.createElement("iframe");
+  f.width = w; f.height = 900;
+  f.src = "http://localhost:4173/" + p;
+  f.onload = () => {
+    const d = f.contentDocument;
+    out.push({
+      page: p, vw: w,
+      docScrollW: d.documentElement.scrollWidth,
+      bodyScrollW: d.body.scrollWidth,
+      overflow: d.documentElement.scrollWidth - w,
+      widest: widest(d)
+    });
+    if (--pending === 0) document.getElementById("out").textContent = JSON.stringify(out, null, 1);
+  };
+  document.getElementById("frames").appendChild(f);
+}));
+</script>
+</body>
+</html>
